@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roselle treats 'N' more - Premium Treats & Bakery</title>
+  <style>
+    :root{
+      --bg:#080312;
+      --bg2:#170f2b;
+      --deep:#1b0a3d;
+      --purple:#3a076d;
+      --purple2:#5d1b98;
+      --gold:#ffb400;
+      --pink:#ff6b9d;
+      --red:#ff5858;
+      --cyan:#00c5ff;
+      --cyan2:#0099cc;
+      --text:#f5f7ff;
+      --muted:#d5d9ea;
+      --card:#17172a;
+      --card2:#0d1224;
+      --success:#49d98c;
+      --shadow:0 12px 35px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:radial-gradient(circle at top, #18092d 0%, #070312 35%, #000 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    img{max-width:100%;display:block}
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:14px 22px;
+      background:linear-gradient(135deg, #38037e 0%, #1a0047 100%);
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+
+    .logo{
+      font-family:"Times New Roman", Times, serif;
+      font-size:clamp(1.4rem,2vw,2rem);
+      color:var(--gold);
+      font-weight:700;
+      letter-spacing:.5px;
+      text-shadow:2px 2px 5px rgba(0,0,0,.35);
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:#f5f5f5;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:10px;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover{
+      background:rgba(255,180,0,.08);
+      color:var(--gold);
+    }
+
+    .navbar-buttons{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:none;
+      border-radius:10px;
+      padding:10px 15px;
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+      color:#fff;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{
+      background:linear-gradient(135deg, #f3a400, var(--gold));
+      color:#120d0c;
+      box-shadow:0 10px 18px rgba(255,180,0,.3);
+    }
+    .btn-pink{
+      background:linear-gradient(135deg, #ff6b9d, #ff1493);
+    }
+    .btn-cyan{
+      background:linear-gradient(135deg, #00d4ff, #0099cc);
+    }
+    .btn-gold{
+      background:linear-gradient(135deg, #d2691e, #ff8c00);
+      color:#fff;
+    }
+
+    .page{
+      display:none;
+      min-height:calc(100vh - 140px);
+      padding:40px 18px;
+      animation:fadeIn .35s ease;
+    }
+
+    .page.active{display:block}
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(8px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    .section-title{
+      text-align:center;
+      color:var(--gold);
+      font-size:clamp(2rem,4vw,3rem);
+      margin:0 0 18px;
+    }
+
+    /* Home */
+    #home{
+      background:linear-gradient(135deg,#000 0%,#1a0047 100%);
+      text-align:center;
+      padding-top:70px;
+      padding-bottom:60px;
+    }
+
+    #home h1{
+      font-size:clamp(2.2rem, 5vw, 4rem);
+      margin:12px 0 8px;
+      color:#ffb400;
+      text-shadow:2px 2px 10px rgba(0,0,0,.6);
+    }
+
+    #home h3{
+      font-size:clamp(1.2rem,2vw,1.7rem);
+      color:#ff6b9d;
+      margin:0;
+    }
+
+    #home p{
+      max-width:900px;
+      margin:18px auto 0;
+      font-size:1.03rem;
+      color:#e9ebf9;
+      line-height:1.8;
+    }
+
+    .home-cta{
+      margin-top:24px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* About */
+    #about{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    #about h2{
+      color:var(--gold);
+      font-size:2.3rem;
+      margin:0 0 20px;
+      text-align:center;
+    }
+
+    #about .story-box{
+      background:linear-gradient(135deg,#20113a,#120d2a);
+      border:1px solid rgba(255,180,0,.2);
+      border-radius:18px;
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+    }
+
+    #about h3, #about h4{
+      color:#ecf0ff;
+      font-weight:400;
+      margin:10px 0;
+      line-height:1.8;
+    }
+
+    /* Products */
+    #products{
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .products-filters{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:26px;
+    }
+
+    .filter-btn{
+      border:none;
+      background:rgba(255,180,0,.08);
+      color:var(--gold);
+      border:2px solid transparent;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      transition: .2s ease;
+    }
+
+    .filter-btn.active{
+      background:#ffb400;
+      color:#120d0c;
+      border-color:#ffb400;
+    }
+
+    .cards-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:18px;
+    }
+
+    .hive-card{
+      position:relative;
+      background:linear-gradient(135deg,#1a1a2d,#161b2b);
+      border:2px solid rgba(255,180,0,.06);
+      border-radius:16px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      transition: all .24s ease;
+      overflow:hidden;
+    }
+
+    .hive-card:hover{
+      transform:translateY(-8px);
+      border-color: rgba(255,180,0,.8);
+      box-shadow:0 18px 38px rgba(255,180,0,.14);
+    }
+
+    .hive-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:12px;
+      background:#0e1324;
+    }
+
+    .category-tag{
+      position:absolute;
+      top:12px;
+      left:12px;
+      background:linear-gradient(135deg,#ff6b9d,#ff1493);
+      color:#fff;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.5px;
+      z-index:2;
+    }
+
+    .price-tag{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:#ffb400;
+      color:#120d0c;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      z-index:2;
+    }
+
+    .hive-card h2{
+      margin:10px 0 6px;
+      font-size:1.05rem;
+      color:var(--gold);
+    }
+
+    .description{
+      color:#bfc7dc;
+      font-size:.9rem;
+      margin:0 0 8px;
+    }
+
+    .stars{
+      color:#ffd75a;
+      letter-spacing:2px;
+      margin-bottom:12px;
+      font-size:1.1rem;
+    }
+
+    .cart-btn{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:10px;
+      background:linear-gradient(135deg,#00d4ff,#0099cc);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    /* Games */
+    #games{
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .games-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+      gap:22px;
+      margin-top:18px;
+    }
+
+    .game-panel{
+      background:linear-gradient(135deg,#1a1a2d,#121827);
+      border:2px solid rgba(255,180,0,.28);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .game-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:16px 18px 10px;
+    }
+
+    .game-header h3{
+      margin:0;
+      color:var(--gold);
+      font-size:1.25rem;
+    }
+
+    .game-header .badge{
+      background:rgba(255,180,0,.12);
+      color:var(--gold);
+      border:1px solid rgba(255,180,0,.18);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    .game-wrap{
+      padding:0 14px 14px;
+    }
+
+    canvas{
+      display:block;
+      width:100%;
+      max-width:100%;
+      border-radius:12px;
+      background:linear-gradient(180deg, #111827 0%, #0d1220 100%);
+      box-shadow:inset 0 0 0 2px rgba(255,180,0,.14);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .game-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-top:12px;
+      flex-wrap:wrap;
+    }
+
+    .mini-btn{
+      padding:9px 12px;
+      font-weight:700;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      color:#fff;
+      background:linear-gradient(135deg,#ff6b9d,#ff1493);
+    }
+
+    .score-tag{
+      color:#e9ebf9;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    /* Sign In */
+    #signin{
+      max-width:700px;
+      margin:0 auto;
+    }
+
+    .signin-container{
+      background:linear-gradient(135deg,#1a1a2e,#16213e);
+      padding:28px;
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      border:2px solid rgba(255,180,0,.5);
+    }
+
+    .signin-container h1{
+      margin:0 0 14px;
+      color:var(--gold);
+      text-align:center;
+      font-size:2rem;
+    }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .tab-btn{
+      background:rgba(255,255,255,.06);
+      border:none;
+      color:#fff;
+      padding:10px 16px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .tab-btn.active{
+      background:var(--gold);
+      color:#120d0c;
+    }
+
+    .form-group{margin:14px 0}
+    .form-group label{
+      display:block;
+      color:var(--gold);
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+    .form-group input,
+    .form-group textarea{
+      width:100%;
+      background:rgba(255,255,255,.05);
+      border:2px solid rgba(255,180,0,.55);
+      color:#fff;
+      padding:12px 10px;
+      border-radius:10px;
+      outline:none;
+    }
+
+    .signin-btn-submit{
+      width:100%;
+      margin-top:12px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(135deg,#00d4ff,#0099cc);
+      color:#fff;
+      padding:12px 16px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .signout-wrap{margin-top:12px;text-align:center}
+
+    /* Contact / Cart / Employees */
+    #contact, #cart, #employees{
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    .contact-info, .contact-form, .cart-container, .employee-container{
+      background:linear-gradient(135deg,#1a1a2e,#16213e);
+      padding:26px 22px;
+      border-radius:18px;
+      border:2px solid rgba(255,180,0,.5);
+      box-shadow:var(--shadow);
+      margin:12px 0;
+    }
+
+    .contact-info h3, .contact-form h3, .employee-container h1{
+      color:var(--gold);
+      margin-top:0;
+    }
+
+    .contact-info p{
+      color:#edf1ff;
+      font-size:1rem;
+      margin:10px 0;
+    }
+
+    .submit-btn,.apply-btn{
+      width:100%;
+      border:none;
+      border-radius:10px;
+      background:linear-gradient(135deg,#ff6b9d,#ff1493);
+      color:#fff;
+      padding:12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .cart-table{
+      width:100%;
+      border-collapse:collapse;
+      color:#fff;
+      margin:14px 0;
+    }
+
+    .cart-table th{
+      background:linear-gradient(135deg,#ffb400,#ff6b9d);
+      color:#120d0c;
+      padding:12px 10px;
+      text-align:left;
+      font-weight:800;
+    }
+
+    .cart-table td{
+      padding:12px 10px;
+      border-bottom:1px solid rgba(255,180,0,.1);
+    }
+
+    .remove-btn{
+      background:#ff4d4d;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      padding:7px 10px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .cart-summary{
+      background:rgba(255,180,0,.08);
+      border:2px solid rgba(255,180,0,.5);
+      border-radius:12px;
+      padding:14px;
+      color:#fff;
+    }
+
+    .checkout-btn{
+      width:100%;
+      margin-top:10px;
+      border:none;
+      border-radius:10px;
+      background:linear-gradient(135deg,#00d4ff,#0099cc);
+      color:#fff;
+      padding:11px 12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .empty-message{
+      text-align:center;
+      color:#b8bfd8;
+      padding:40px 20px;
+    }
+
+    .empty-message a{
+      color:var(--gold);
+      font-weight:700;
+    }
+
+    /* Receipt */
+    #receipt{
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .receipt-card{
+      background:linear-gradient(135deg,#1a1a2e,#16213e);
+      border:2px solid rgba(255,180,0,.5);
+      border-radius:20px;
+      padding:28px 22px;
+      box-shadow:var(--shadow);
+    }
+
+    .receipt-card h1{
+      color:var(--gold);
+      text-align:center;
+      margin:0 0 18px;
+    }
+
+    .receipt-area{
+      color:#edf3ff;
+      background:rgba(255,255,255,.02);
+      border-radius:12px;
+      border:1px solid rgba(255,180,0,.15);
+      padding:18px;
+    }
+
+    .receipt-meta{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:#e9ebf9;
+      margin-bottom:12px;
+    }
+
+    .receipt-items{
+      margin:12px 0 18px;
+      padding-left:18px;
+      line-height:1.8;
+      color:#edf3ff;
+    }
+
+    .receipt-total{
+      font-size:1.1rem;
+      color:var(--gold);
+      font-weight:800;
+    }
+
+    .receipt-actions{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .receipt-actions .btn{
+      flex:1;
+      min-width:150px;
+    }
+
+    /* Footer */
+    footer{
+      background:linear-gradient(135deg,#140922,#090a14);
+      color:#fff;
+      padding:26px 18px 30px;
+      margin-top:30px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .footer-brand{
+      color:var(--gold);
+      font-weight:800;
+      font-size:1.8rem;
+      margin:0 0 6px;
+      font-family:'Times New Roman', Times, serif;
+    }
+
+    .footer-subtitle{
+      color:#dfe5ff;
+      margin:0 0 18px;
+    }
+
+    .footer-menu{
+      list-style:none;
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      flex-wrap:wrap;
+      padding:0;
+      margin:0 0 12px;
+    }
+
+    .footer-menu a{
+      color:#fff;
+      font-weight:600;
+      opacity:.9;
+    }
+
+    .copyright{
+      margin:0;
+      color:#d5d9ea;
+      font-size:.95rem;
+    }
+
+    @media (max-width: 700px){
+      .navbar{
+        justify-content:center;
+      }
+      .nav-links{justify-content:center}
+      .navbar-buttons{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍰 Roselle treats 'N' more</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('about'); return false;">About</a></li>
+        <li><a href="#" onclick="showPage('products'); return false;">Products</a></li>
+        <li><a href="#" onclick="showPage('games'); return false;">Games</a></li>
+        <li><a href="#" onclick="showPage('contact'); return false;">Contact</a></li>
+      </ul>
+
+      <div class="navbar-buttons" id="navButtons">
+        <button class="btn btn-cyan" id="accountBtn" onclick="showPage('signin'); return false;">🛒 Sign In</button>
+        <button class="btn btn-primary" onclick="showPage('cart'); return false;">🛍️ Cart (<span id="cartCount">0</span>)</button>
+        <button class="btn btn-pink" onclick="showPage('employees'); return false;">💼 Join Us</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="container">
+        <h1>Welcome to Roselle treats 'N' more</h1>
+        <h3>Premium Baked Goods & Luxury Treats</h3>
+        <p>
+          Experience the finest artisanal baked goods and premium treats crafted with passion and dedication since 2016.
+          From delicate pastries to exquisite cakes, every creation is made with the finest ingredients.
+        </p>
+        <div class="home-cta">
+          <button class="btn btn-primary" onclick="showPage('products'); return false;">Explore Products</button>
+          <button class="btn btn-pink" onclick="showPage('games'); return false;">Play Games</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page">
+      <div class="container">
+        <h2>About Roselle treats 'N' more</h2>
+        <div class="story-box">
+          <h3>Our Story</h3>
+          <h4>
+            Roselle Treats 'N' More was founded in 2022 by Rosemary Udoffia Nwajei,
+            building on years of passion and expertise in baking and confectionery.
+            We combine traditional recipes with innovative treats made from premium ingredients.
+          </h4>
+          <h4>
+            We offer flexible delivery options — home delivery or pick-up — ensuring fresh,
+            perfect treats every time.
+          </h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="page">
+      <div class="container">
+        <h1 class="section-title">Our Premium Products Collection</h1>
+        <div class="products-filters">
+          <button class="filter-btn active" data-category="all" onclick="filterProducts('all', event)">All Products</button>
+          <button class="filter-btn" data-category="pastry" onclick="filterProducts('pastry', event)">Pastries</button>
+          <button class="filter-btn" data-category="luxury" onclick="filterProducts('luxury', event)">Luxury Items</button>
+          <button class="filter-btn" data-category="beverage" onclick="filterProducts('beverage', event)">Beverages</button>
+          <button class="filter-btn" data-category="cake" onclick="filterProducts('cake', event)">Cakes</button>
+        </div>
+        <div class="cards-container" id="productsContainer"></div>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="games" class="page">
+      <div class="container">
+        <h1 class="section-title">🎮 Play Our Games</h1>
+        <div class="games-grid">
+          <div class="game-panel">
+            <div class="game-header">
+              <h3>Piano Pop</h3>
+              <span class="badge">Arcade</span>
+            </div>
+            <div class="game-wrap">
+              <canvas id="pianoCanvas" width="360" height="500"></canvas>
+              <div class="game-actions">
+                <button class="mini-btn" onclick="startPianoGame()">Start Game</button>
+                <span class="score-tag" id="pianoScore">Score: 0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-panel">
+            <div class="game-header">
+              <h3>Sword Rush</h3>
+              <span class="badge">Action</span>
+            </div>
+            <div class="game-wrap">
+              <canvas id="swordCanvas" width="360" height="500"></canvas>
+              <div class="game-actions">
+                <button class="mini-btn" onclick="startSwordGame()">Start Game</button>
+                <span class="score-tag" id="swordScore">Score: 0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-panel">
+            <div class="game-header">
+              <h3>Sliding Puzzle</h3>
+              <span class="badge">Puzzle</span>
+            </div>
+            <div class="game-wrap">
+              <canvas id="puzzleCanvas" width="360" height="360"></canvas>
+              <div class="game-actions">
+                <button class="mini-btn" onclick="shufflePuzzleBoard()">Shuffle</button>
+                <span class="score-tag" id="puzzleStatus">Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNIN -->
+    <section id="signin" class="page">
+      <div class="container">
+        <div class="signin-container">
+          <h1>🔐 Account</h1>
+          <div class="tabs">
+            <button id="tabSignIn" class="tab-btn active" onclick="toggleAuthTab('signin')">Sign In</button>
+            <button id="tabSignUp" class="tab-btn" onclick="toggleAuthTab('signup')">Sign Up</button>
+          </div>
+
+          <form id="signInForm" onsubmit="handleSignIn(event)">
+            <div class="form-group">
+              <label for="signin_email">Email:</label>
+              <input id="signin_email" type="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="signin_password">Password:</label>
+              <input id="signin_password" type="password" required placeholder="Your password">
+            </div>
+            <button type="submit" class="signin-btn-submit">Sign In</button>
+          </form>
+
+          <form id="signUpForm" style="display:none" onsubmit="handleSignUp(event)">
+            <div class="form-group">
+              <label for="signup_name">Full Name:</label>
+              <input id="signup_name" type="text" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="signup_email">Email:</label>
+              <input id="signup_email" type="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="signup_phone">Phone:</label>
+              <input id="signup_phone" type="tel" required placeholder="090xxxxxxx">
+            </div>
+            <div class="form-group">
+              <label for="signup_address">Address:</label>
+              <input id="signup_address" type="text" required placeholder="Delivery address">
+            </div>
+            <div class="form-group">
+              <label for="signup_password">Password:</label>
+              <input id="signup_password" type="password" required placeholder="Create a password">
+            </div>
+            <div class="form-group">
+              <label for="signup_password_confirm">Confirm Password:</label>
+              <input id="signup_password_confirm" type="password" required placeholder="Confirm password">
+            </div>
+            <button type="submit" class="signin-btn-submit">Create Account</button>
+          </form>
+
+          <div class="signout-wrap">
+            <button class="btn btn-primary" id="signOutBtn" style="display:none" onclick="signOut()">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page">
+      <div class="container">
+        <h1 class="section-title">Contact Us</h1>
+
+        <div class="contact-info">
+          <h3>📞 Get in Touch</h3>
+          <p><strong>Phone 1:</strong> <a href="tel:09067103388" style="color:#ffb400">09067103388</a></p>
+          <p><strong>Phone 2:</strong> <a href="tel:08066325925" style="color:#ffb400">08066325925</a></p>
+          <p><strong>Address:</strong> Lagos, Nigeria</p>
+          <p><strong>Hours:</strong> Monday - Sunday, 8:00 AM - 8:00 PM</p>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send us a Message</h3>
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contact_name">Full Name:</label>
+              <input id="contact_name" type="text" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="contact_email">Email:</label>
+              <input id="contact_email" type="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="contact_phone">Phone:</label>
+              <input id="contact_phone" type="tel" required placeholder="090xxxxxxx">
+            </div>
+            <div class="form-group">
+              <label for="contact_message">Message:</label>
+              <textarea id="contact_message" required placeholder="How can we help?"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send on Gmail</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART -->
+    <section id="cart" class="page">
+      <div class="container">
+        <div class="cart-container">
+          <h1 class="section-title" style="margin-bottom:10px;">🛒 Shopping Cart</h1>
+          <div id="cartContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECEIPT -->
+    <section id="receipt" class="page">
+      <div class="container">
+        <div class="receipt-card">
+          <h1>Order Receipt</h1>
+          <div id="receiptArea" class="receipt-area"></div>
+          <div class="receipt-actions">
+            <button class="btn btn-primary" id="emailReceiptBtn">Email Receipt (Gmail)</button>
+            <button class="btn btn-gold" onclick="downloadReceiptPDF()">Download Receipt (Print)</button>
+            <button class="btn btn-cyan" onclick="showPage('home')">Done</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPLOYEES -->
+    <section id="employees" class="page">
+      <div class="container">
+        <div class="employee-container">
+          <h1>💼 Join Our Team</h1>
+          <p style="text-align:center;color:#e0e0e0;margin-bottom:12px">
+            Become part of Roselle treats 'N' more and earn excellent income!
+          </p>
+
+          <div class="employee-benefits" style="margin-bottom:12px">
+            <h2 style="color:#ffb400">💰 Employment Benefits</h2>
+            <div style="color:#e0e0e0">
+              <p>Base Pay: ₦200,000 per month</p>
+              <p>Performance Bonus: Up to 50%</p>
+              <p>Commission: 15% on sales generated</p>
+            </div>
+          </div>
+
+          <form id="employeeForm" onsubmit="handleEmployeeApplication(event)">
+            <div class="form-group">
+              <label for="emp_name">Full Name:</label>
+              <input type="text" id="emp_name" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+              <label for="emp_email">Email:</label>
+              <input type="email" id="emp_email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="emp_phone">Phone Number:</label>
+              <input type="tel" id="emp_phone" required placeholder="090xxxxxxx">
+            </div>
+            <div class="form-group">
+              <label for="emp_experience">Experience (optional):</label>
+              <input type="text" id="emp_experience" placeholder="Your relevant experience">
+            </div>
+            <button type="submit" class="apply-btn">Apply Now (Gmail)</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <h3 class="footer-brand">Rosellé treats 'N' more</h3>
+      <p class="footer-subtitle">Premium Baked Goods & Luxury Treats since 2016</p>
+      <ul class="footer-menu">
+        <li><a href="#" onclick="showPage('home');return false;">Home</a></li>
+        <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+        <li><a href="#" onclick="showPage('products');return false;">Products</a></li>
+        <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+      </ul>
+      <p class="copyright">© 2026 Roselle treats 'N' more. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // =========================
+    // Utility helpers
+    // =========================
+    function svgDataUrl(label, bg1, bg2, accent, icon = "🍰") {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0%" stop-color="${bg1}" />
+              <stop offset="100%" stop-color="${bg2}" />
+            </linearGradient>
+          </defs>
+          <rect width="600" height="420" fill="url(#g)"/>
+          <circle cx="300" cy="150" r="95" fill="${accent}" opacity="0.15"/>
+          <text x="300" y="210" text-anchor="middle" font-size="76" fill="${accent}">${icon}</text>
+          <text x="300" y="300" text-anchor="middle" font-family="Arial" font-size="26" font-weight="700" fill="#ffffff">
+            ${label}
+          </text>
+        </svg>
+      `;
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }
+
+    function escapeHtml(s) {
+      return s ? s.replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+      }[c])) : '';
+    }
+
+    function escapeInline(s){
+      return String(s).replace(/'/g, "\\'").replace(/"/g, "&quot;");
+    }
+
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const el = document.getElementById(pageId);
+      if (!el) return;
+      el.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pageId === 'products') renderProducts(currentFilter || 'all');
+      if (pageId === 'games') {
+        renderGames();
+      }
+      if (pageId === 'cart') renderCart();
+      if (pageId === 'receipt') renderReceipt();
+    }
+
+    // =========================
+    // Product data
+    // =========================
+    const productPalette = {
+      pastry: ["#c65a3d","#7f3d2c","#f3d29b"],
+      cake: ["#b85cff","#5a2b91","#ffcf7d"],
+      luxury: ["#f24ca1","#891d6b","#ffe29a"],
+      beverage: ["#5ec9ff","#225d94","#fff2b5"]
+    };
+
+    const products = [
+      { id:1, name:"Croissants (Pack of 6)", price:3500, category:"pastry", description:"Fresh butter croissants", image:svgDataUrl("Croissants", "#d9864c", "#7a3820", "#f3d29b","🥐") },
+      { id:2, name:"Danish Pastries", price:2800, category:"pastry", description:"Assorted danish pastries", image:svgDataUrl("Danish", "#d57c5c", "#763725", "#ffe29a","🥐") },
+      { id:3, name:"Buns & Puff Puff (1kg Bowl)", price:2500, category:"pastry", description:"Fresh baked buns", image:svgDataUrl("Puff Puff", "#cc8c54", "#694326", "#ffd79a","🍞") },
+      { id:4, name:"Doughnuts (Dozen)", price:3000, category:"pastry", description:"Glazed doughnuts", image:svgDataUrl("Doughnuts", "#ce7b44", "#9d502c", "#ffd29b","🍩") },
+      { id:5, name:"Wedding Cake (3-Tier)", price:150000, category:"cake", description:"Luxury wedding cake", image:svgDataUrl("Wedding Cake", "#9e54f5", "#51288a", "#ffd98a","🎂") },
+      { id:6, name:"Chocolate Cake (8 inches)", price:35000, category:"cake", description:"Rich chocolate cake", image:svgDataUrl("Chocolate Cake", "#6d3f2a", "#3d1f17", "#f5d7a7","🍫") },
+      { id:7, name:"Vanilla Cake (6 inches)", price:25000, category:"cake", description:"Classic vanilla cake", image:svgDataUrl("Vanilla Cake", "#f4db9d", "#b7833d", "#fff6ce","🍰") },
+      { id:8, name:"Cheese Cake", price:28000, category:"cake", description:"Premium cheesecake", image:svgDataUrl("Cheese Cake", "#f3d584", "#c99b4d", "#fff1bf","🧀") },
+      { id:9, name:"Red Velvet Cake", price:32000, category:"cake", description:"Elegant red velvet cake", image:svgDataUrl("Red Velvet", "#e74c4c", "#7a1421", "#ffe1c7","🍰") },
+      { id:10, name:"Gold Leaf Pastries", price:15000, category:"luxury", description:"24k edible gold pastries", image:svgDataUrl("Gold Leaf", "#d9ae33", "#8d6408", "#fff0b4","✨") },
+      { id:11, name:"Premium Macarons (Box of 12)", price:12000, category:"luxury", description:"French premium macarons", image:svgDataUrl("Macarons", "#f2a9d1", "#8a2668", "#ffd4ef","🍬") },
+      { id:12, name:"Chocolate Truffles (Box)", price:8500, category:"luxury", description:"Handmade chocolate truffles", image:svgDataUrl("Truffles", "#9c6035", "#4b2b16", "#f0c68b","🍫") },
+      { id:13, name:"Artisan Bread Selection", price:5500, category:"luxury", description:"Premium artisan breads", image:svgDataUrl("Artisan Bread", "#dca66d", "#8d4d18", "#fff0d0","🥖") },
+      { id:14, name:"Caviar Cupcakes (6 pieces)", price:18000, category:"luxury", description:"Luxury caviar-topped cupcakes", image:svgDataUrl("Caviar Cupcakes", "#bcd1ff", "#516899", "#f5d9f4","🎀") },
+      { id:15, name:"Premium Honey (300ml)", price:8000, category:"beverage", description:"Pure organic honey", image:svgDataUrl("Honey", "#f2bf4f", "#b8711e", "#fff9d5","🍯") },
+      { id:16, name:"Artisan Coffee Blend (500g)", price:12000, category:"beverage", description:"Specialty coffee beans", image:svgDataUrl("Coffee Blend", "#5e3d2d", "#29180d", "#d7a66c","☕") },
+      { id:17, name:"Luxury Hot Chocolate Mix", price:5500, category:"beverage", description:"Premium chocolate mix", image:svgDataUrl("Hot Chocolate", "#7d4c35", "#3d210f", "#d9b089","🍫") },
+      { id:18, name:"Herbal Tea Collection", price:7500, category:"beverage", description:"Organic herbal teas", image:svgDataUrl("Herbal Tea", "#5ac588", "#1a6d4a", "#eaffd7","🍵") },
+      { id:19, name:"Fresh Yoghurt (1kg)", price:4500, category:"beverage", description:"Creamy yoghurt", image:svgDataUrl("Yoghurt", "#f0fcff", "#7dced7", "#d8f7ff","🥣") },
+      { id:20, name:"Nirvana Bottle Water", price:1450, category:"beverage", description:"Bottle Water", image:svgDataUrl("Water", "#79d4ff", "#1f6ed8", "#e8ffff","💧") }
+    ];
+
+    const games = [
+      { name: "Piano Fire", image: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="400" height="250" fill="#101827"/><rect x="40" y="30" width="80" height="180" rx="12" fill="#7d5cff"/><rect x="130" y="30" width="80" height="180" rx="12" fill="#ff6b9d"/><rect x="220" y="30" width="80" height="180" rx="12" fill="#00d4ff"/><rect x="310" y="30" width="50" height="180" rx="12" fill="#ffb400"/><text x="200" y="225" text-anchor="middle" fill="#fff" font-size="28" font-family="Arial" font-weight="700">Piano Pop</text></svg>`) },
+      { name: "Sword Simulator", image: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="400" height="250" fill="#101827"/><path d="M80 180 L220 52 L250 80 L120 208 Z" fill="#ffb400"/><circle cx="280" cy="80" r="35" fill="#ff6b9d"/><text x="200" y="225" text-anchor="middle" fill="#fff" font-size="25" font-family="Arial" font-weight="700">Sword Rush</text></svg>`) },
+      { name: "Puzzle Quest", image: "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="400" height="250" fill="#101827"/><rect x="80" y="35" width="70" height="70" fill="#00d4ff"/><rect x="155" y="35" width="70" height="70" fill="#ffb400"/><rect x="230" y="35" width="70" height="70" fill="#00d4ff"/><rect x="80" y="110" width="70" height="70" fill="#ff6b9d"/><rect x="155" y="110" width="70" height="70" fill="#fff"/><rect x="230" y="110" width="70" height="70" fill="#ffb400"/><rect x="155" y="185" width="70" height="30" fill="#ff6b9d"/><text x="200" y="225" text-anchor="middle" fill="#fff" font-size="25" font-family="Arial" font-weight="700">Puzzle</text></svg>`) }
+    ];
+
+    // =========================
+    // Auth state
+    // =========================
+    let cart = JSON.parse(localStorage.getItem('rt_cart') || '[]');
+    let currentUser = JSON.parse(localStorage.getItem('rt_currentUser') || 'null');
+    let currentFilter = 'all';
+
+    function saveCart() {
+      localStorage.setItem('rt_cart', JSON.stringify(cart));
+      const c = document.getElementById('cartCount');
+      if (c) c.textContent = cart.length;
+    }
+
+    function setCurrentUser(user) {
+      currentUser = user;
+      localStorage.setItem('rt_currentUser', JSON.stringify(user));
+      updateAccountUI();
+    }
+
+    function updateAccountUI() {
+      const accountBtn = document.getElementById('accountBtn');
+      const signOutBtn = document.getElementById('signOutBtn');
+      if (currentUser) {
+        accountBtn.textContent = `👤 ${currentUser.name}`;
+        signOutBtn.style.display = 'inline-block';
+      } else {
+        accountBtn.textContent = '🛒 Sign In';
+        signOutBtn.style.display = 'none';
+      }
+    }
+
+    async function hashPassword(password) {
+      const enc = new TextEncoder();
+      const data = enc.encode(password);
+      const hashBuf = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // =========================
+    // Auth functions
+    // =========================
+    function toggleAuthTab(tab) {
+      document.getElementById('tabSignIn').classList.toggle('active', tab === 'signin');
+      document.getElementById('tabSignUp').classList.toggle('active', tab === 'signup');
+      document.getElementById('signInForm').style.display = (tab === 'signin') ? '' : 'none';
+      document.getElementById('signUpForm').style.display = (tab === 'signup') ? '' : 'none';
+    }
+
+    async function handleSignUp(e) {
+      e.preventDefault();
+      const name = document.getElementById('signup_name').value.trim();
+      const email = document.getElementById('signup_email').value.trim().toLowerCase();
+      const phone = document.getElementById('signup_phone').value.trim();
+      const address = document.getElementById('signup_address').value.trim();
+      const pwd = document.getElementById('signup_password').value;
+      const pwd2 = document.getElementById('signup_password_confirm').value;
+
+      if (pwd !== pwd2) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('rt_users') || '[]');
+      if (users.find(u => u.email === email)) {
+        alert('An account with that email already exists. Please sign in.');
+        toggleAuthTab('signin');
+        return;
+      }
+
+      const pwdHash = await hashPassword(pwd);
+      const newUser = { name, email, phone, address, pwdHash, createdAt: Date.now() };
+      users.push(newUser);
+      localStorage.setItem('rt_users', JSON.stringify(users));
+
+      setCurrentUser({ name, email, phone, address });
+      alert(`Account created. Welcome, ${name}!`);
+      document.getElementById('signUpForm').reset();
+      showPage('products');
+    }
+
+    async function handleSignIn(e) {
+      e.preventDefault();
+      const email = document.getElementById('signin_email').value.trim().toLowerCase();
+      const pwd = document.getElementById('signin_password').value;
+
+      const users = JSON.parse(localStorage.getItem('rt_users') || '[]');
+      const user = users.find(u => u.email === email);
+
+      if (!user) {
+        alert('No account found. Please sign up.');
+        toggleAuthTab('signup');
+        return;
+      }
+
+      const pwdHash = await hashPassword(pwd);
+      if (pwdHash !== user.pwdHash) {
+        alert('Invalid email or password.');
+        return;
+      }
+
+      setCurrentUser({ name: user.name, email: user.email, phone: user.phone, address: user.address });
+      alert(`✅ Welcome back, ${user.name}!`);
+      document.getElementById('signInForm').reset();
+      showPage('products');
+    }
+
+    function signOut() {
+      if (!currentUser) return;
+      if (!confirm('Sign out?')) return;
+      setCurrentUser(null);
+      localStorage.removeItem('rt_currentUser');
+      alert('You have been signed out.');
+      showPage('home');
+    }
+
+    // =========================
+    // Products
+    // =========================
+    function renderProducts(category = 'all') {
+      const container = document.getElementById('productsContainer');
+      if (!container) return;
+      const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+
+      container.innerHTML = filtered.map(p => `
+        <div class="hive-card">
+          <span class="category-tag">${p.category.toUpperCase()}</span>
+          <span class="price-tag">₦${p.price.toLocaleString()}</span>
+          <img src="${p.image}" alt="${p.name}">
+          <h2>${p.name}</h2>
+          <p class="description">${p.description}</p>
+          <div class="stars">★★★★☆</div>
+          <button class="cart-btn" onclick="addToCart(${p.id}, '${escapeInline(p.name)}', ${p.price})">Add to Cart</button>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+      });
+    }
+
+    function filterProducts(category, event) {
+      currentFilter = category;
+      renderProducts(category);
+    }
+
+    function renderGames() {
+      const container = document.getElementById('gamesContainer');
+      if (container) {
+        container.innerHTML = games.map(g => `
+          <div class="game-card">
+            <img src="${g.image}" alt="${g.name}">
+            <div class="game-info">
+              <h3 style="color:#ffb400">${g.name}</h3>
+              <button class="game-btn" onclick="window.open('${g.url || '#'}','_blank')">Play Now</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // =========================
+    // Cart
+    // =========================
+    function addToCart(id, name, price) {
+      if (!currentUser) {
+        const go = confirm('Please sign in first to add items to the cart. Go to Sign In?');
+        if (go) showPage('signin');
+        return;
+      }
+
+      cart.push({ id, name, price });
+      saveCart();
+      alert(`✅ ${name} added to cart!`);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartContent');
+      if (!container) return;
+
+      if (!cart || cart.length === 0) {
+        container.innerHTML = `
+          <p class="empty-message">
+            Your cart is empty.
+            <a href="#" onclick="showPage('products');return false;">Start shopping!</a>
+          </p>
+        `;
+        return;
+      }
+
+      let total = 0;
+      let html = `
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      cart.forEach((item, idx) => {
+        total += Number(item.price);
+        html += `
+          <tr>
+            <td>${escapeHtml(item.name)}</td>
+            <td>₦${Number(item.price).toLocaleString()}</td>
+            <td><button class="remove-btn" onclick="removeFromCart(${idx})">Remove</button></td>
+          </tr>
+        `;
+      });
+
+      const deliveryFee = 2000;
+      const grandTotal = total + deliveryFee;
+
+      html += `</tbody></table>`;
+      html += `
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <p><strong>Subtotal:</strong> ₦${total.toLocaleString()}</p>
+          <p><strong>Delivery Fee:</strong> ₦${deliveryFee.toLocaleString()}</p>
+          <p style="font-size:18px;color:#ffb400;margin-top:10px"><strong>Total: ₦${grandTotal.toLocaleString()}</strong></p>
+          <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout</button>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    // =========================
+    // Checkout & Receipt
+    // =========================
+    function handleCheckout() {
+      if (!currentUser) {
+        alert('Please sign in first to checkout.');
+        showPage('signin');
+        return;
+      }
+
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, i) => sum + Number(i.price), 0);
+      const deliveryFee = 2000;
+      const total = subtotal + deliveryFee;
+
+      const order = {
+        id: 'RT' + Date.now(),
+        date: new Date().toISOString(),
+        items: cart.slice(),
+        subtotal,
+        deliveryFee,
+        total,
+        customer: {
+          name: currentUser.name,
+          email: currentUser.email,
+          phone: currentUser.phone,
+          address: currentUser.address
+        }
+      };
+
+      const orders = JSON.parse(localStorage.getItem('rt_orders') || '[]');
+      orders.push(order);
+      localStorage.setItem('rt_orders', JSON.stringify(orders));
+
+      cart = [];
+      saveCart();
+
+      showPage('receipt');
+      renderReceipt(order);
+
+      alert('Order created — your receipt is ready. You can email it using Gmail.');
+    }
+
+    function renderReceipt(order) {
+      const area = document.getElementById('receiptArea');
+      if (!area) return;
+
+      if (!order) {
+        const orders = JSON.parse(localStorage.getItem('rt_orders') || '[]');
+        if (!orders.length) {
+          area.innerHTML = '<p style="color:#ccc;">No recent order found.</p>';
+          return;
+        }
+        order = orders[orders.length - 1];
+      }
+
+      const date = new Date(order.date).toLocaleString();
+      const itemsHtml = order.items.map(it => `<li>${escapeHtml(it.name)} — ₦${Number(it.price).toLocaleString()}</li>`).join('');
+
+      area.innerHTML = `
+        <div>
+          <div class="receipt-meta">
+            <div><strong>Order ID:</strong> <span style="color:#ffb400">${escapeHtml(order.id)}</span></div>
+            <div><strong>Date:</strong> ${escapeHtml(date)}</div>
+          </div>
+
+          <p><strong>Customer:</strong> ${escapeHtml(order.customer.name)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(order.customer.phone)}</p>
+          <p><strong>Address:</strong> ${escapeHtml(order.customer.address)}</p>
+
+          <ul class="receipt-items">${itemsHtml}</ul>
+
+          <p><strong>Subtotal:</strong> ₦${Number(order.subtotal).toLocaleString()}</p>
+          <p><strong>Delivery Fee:</strong> ₦${Number(order.deliveryFee).toLocaleString()}</p>
+          <p class="receipt-total">Total: ₦${Number(order.total).toLocaleString()}</p>
+        </div>
+      `;
+
+      const emailBtn = document.getElementById('emailReceiptBtn');
+      if (emailBtn) {
+        emailBtn.onclick = () => emailReceiptViaGmail(order);
+      }
+    }
+
+    function emailReceiptViaGmail(order) {
+      const subject = `New Order ${order.id} - Roselle treats 'N' more`;
+      const lines = [
+        `Order ID: ${order.id}`,
+        `Date: ${new Date(order.date).toLocaleString()}`,
+        '',
+        'Items:',
+        ...order.items.map(it => `• ${it.name} — ₦${Number(it.price).toLocaleString()}`),
+        '',
+        `Subtotal: ₦${Number(order.subtotal).toLocaleString()}`,
+        `Delivery Fee: ₦${Number(order.deliveryFee).toLocaleString()}`,
+        `Total: ₦${Number(order.total).toLocaleString()}`,
+        '',
+        `Customer: ${order.customer.name}`,
+        `Phone: ${order.customer.phone}`,
+        `Address: ${order.customer.address}`
+      ];
+      const body = lines.join('\n');
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank');
+    }
+
+    function downloadReceiptPDF() {
+      window.print();
+    }
+
+    // =========================
+    // Contact / Employee Forms
+    // =========================
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact_name').value.trim();
+      const email = document.getElementById('contact_email').value.trim();
+      const phone = document.getElementById('contact_phone').value.trim();
+      const message = document.getElementById('contact_message').value.trim();
+
+      const subject = `Contact Form: ${name}`;
+      const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank');
+      alert('Opening Gmail compose window. Send to finalize.');
+      e.target.reset();
+    }
+
+    function handleEmployeeApplication(e) {
+      e.preventDefault();
+      const name = document.getElementById('emp_name').value.trim();
+      const email = document.getElementById('emp_email').value.trim();
+      const phone = document.getElementById('emp_phone').value.trim();
+      const exp = document.getElementById('emp_experience').value.trim() || 'Not specified';
+
+      const subject = `Employment Application: ${name}`;
+      const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nExperience: ${exp}`;
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank');
+      alert('Opening Gmail compose window for your application.');
+      e.target.reset();
+    }
+
+    // =========================
+    // Game 1: Piano Pop
+    // =========================
+    const pianoGame = {
+      canvas: null,
+      ctx: null,
+      tiles: [],
+      score: 0,
+      running: false,
+      spawnTimer: 0,
+      hitLineY: 420,
+      laneWidth: 0,
+      step: 0
+    };
+
+    function startPianoGame() {
+      const canvas = document.getElementById('pianoCanvas');
+      const ctx = canvas.getContext('2d');
+      pianoGame.canvas = canvas;
+      pianoGame.ctx = ctx;
+      pianoGame.tiles = [];
+      pianoGame.score = 0;
+      pianoGame.running = true;
+      pianoGame.spawnTimer = 0;
+      pianoGame.step = 0;
+      document.getElementById('pianoScore').textContent = 'Score: 0';
+
+      const loop = () => {
+        if (!pianoGame.running) return;
+        updatePianoGame();
+        drawPianoGame();
+        requestAnimationFrame(loop);
+      };
+
+      requestAnimationFrame(loop);
+    }
+
+    function updatePianoGame() {
+      const { canvas, tiles, hitLineY } = pianoGame;
+      pianoGame.step += 1;
+
+      if (pianoGame.step % 44 === 0) {
+        const lane = Math.floor(Math.random() * 4);
+        tiles.push({
+          lane,
+          x: lane * (canvas.width / 4) + 12,
+          y: -60,
+          width: canvas.width / 4 - 20,
+          height: 54,
+          color: ['#7d5cff', '#ff6b9d', '#00d4ff', '#ffb400'][lane]
+        });
+      }
+
+      for (let i = tiles.length - 1; i >= 0; i--) {
+        tiles[i].y += 4;
+        if (tiles[i].y > canvas.height + 40) {
+          pianoGame.running = false;
+          alert('Piano Pop game over! Final score: ' + pianoGame.score);
+          return;
+        }
+      }
+    }
+
+    function drawPianoGame() {
+      const { canvas, ctx, tiles, hitLineY } = pianoGame;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0d1220';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < 4; i++) {
+        const x = i * canvas.width / 4;
+        ctx.fillStyle = i % 2 === 0 ? '#151f33' : '#10192c';
+        ctx.fillRect(x, 0, canvas.width / 4, canvas.height);
+      }
+
+      ctx.strokeStyle = '#ffb400';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(0, hitLineY);
+      ctx.lineTo(canvas.width, hitLineY);
+      ctx.stroke();
+
+      tiles.forEach(tile => {
+        ctx.fillStyle = tile.color;
+        ctx.fillRect(tile.x, tile.y, tile.width, tile.height);
+      });
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillText('Tap the tiles', 18, 30);
+
+      ctx.fillStyle = '#ffb400';
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText('Score: ' + pianoGame.score, canvas.width - 120, 32);
+    }
+
+    pianoGame.canvas = document.getElementById('pianoCanvas');
+    pianoGame.canvas.addEventListener('click', function(e) {
+      if (!pianoGame.running) return;
+      const rect = pianoGame.canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * (pianoGame.canvas.width / rect.width);
+      const y = (e.clientY - rect.top) * (pianoGame.canvas.height / rect.height);
+
+      const lane = Math.min(3, Math.floor(x / (pianoGame.canvas.width / 4)));
+      const laneX = lane * (pianoGame.canvas.width / 4);
+      const laneWidth = pianoGame.canvas.width / 4;
+
+      for (let i = pianoGame.tiles.length - 1; i >= 0; i--) {
+        const tile = pianoGame.tiles[i];
+        if (tile.lane === lane &&
+            tile.y + tile.height >= pianoGame.hitLineY - 18 &&
+            tile.y <= pianoGame.hitLineY + 20 &&
+            x >= laneX && x <= laneX + laneWidth) {
+          pianoGame.score += 1;
+          pianoGame.tiles.splice(i, 1);
+          document.getElementById('pianoScore').textContent = 'Score: ' + pianoGame.score;
+          return;
+        }
+      }
+    });
+
+    // =========================
+    // Game 2: Sword Rush
+    // =========================
+    const swordGame = {
+      canvas: null,
+      ctx: null,
+      enemies: [],
+      score: 0,
+      running: false,
+      frame: 0
+    };
+
+    function startSwordGame() {
+      const canvas = document.getElementById('swordCanvas');
+      const ctx = canvas.getContext('2d');
+      swordGame.canvas = canvas;
+      swordGame.ctx = ctx;
+      swordGame.enemies = [];
+      swordGame.score = 0;
+      swordGame.running = true;
+      swordGame.frame = 0;
+      document.getElementById('swordScore').textContent = 'Score: 0';
+
+      const loop = () => {
+        if (!swordGame.running) return;
+        updateSwordGame();
+        drawSwordGame();
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    }
+
+    function updateSwordGame() {
+      swordGame.frame++;
+
+      if (swordGame.frame % 42 === 0) {
+        const x = 30 + Math.random() * (swordGame.canvas.width - 60);
+        const radius = 18 + Math.random() * 18;
+        swordGame.enemies.push({
+          x,
+          y: -30,
+          radius,
+          speed: 2.2 + Math.random() * 1.7
+        });
+      }
+
+      for (let i = swordGame.enemies.length - 1; i >= 0; i--) {
+        swordGame.enemies[i].y += swordGame.enemies[i].speed;
+        if (swordGame.enemies[i].y > swordGame.canvas.height + 50) {
+          swordGame.running = false;
+          alert('Sword Rush game over! Final score: ' + swordGame.score);
+          return;
+        }
+      }
+    }
+
+    function drawSwordGame() {
+      const { canvas, ctx, enemies } = swordGame;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0d1220';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = 'rgba(255,180,0,.8)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(20, canvas.height - 35);
+      ctx.lineTo(canvas.width - 20, canvas.height - 35);
+      ctx.stroke();
+
+      enemies.forEach(enemy => {
+        ctx.beginPath();
+        ctx.fillStyle = '#ff6b9d';
+        ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillText('Move mouse to slash', 18, 26);
+
+      ctx.fillStyle = '#ffb400';
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText('Score: ' + swordGame.score, canvas.width - 120, 32);
+    }
+
+    swordGame.canvas = document.getElementById('swordCanvas');
+    swordGame.canvas.addEventListener('mousemove', function(e) {
+      if (!swordGame.running) return;
+      const rect = swordGame.canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * (swordGame.canvas.width / rect.width);
+      const y = (e.clientY - rect.top) * (swordGame.canvas.height / rect.height);
+
+      for (let i = swordGame.enemies.length - 1; i >= 0; i--) {
+        const enemy = swordGame.enemies[i];
+        const dx = x - enemy.x;
+        const dy = y - enemy.y;
+        if (dx * dx + dy * dy <= enemy.radius * enemy.radius) {
+          swordGame.score += 1;
+          swordGame.enemies.splice(i, 1);
+          document.getElementById('swordScore').textContent = 'Score: ' + swordGame.score;
+          return;
+        }
+      }
+    });
+
+    // =========================
+    // Game 3: Sliding Puzzle
+    // =========================
+    const puzzleGame = {
+      size: 3,
+      board: [],
+      empty: { row: 2, col: 2 },
+      canvas: null,
+      ctx: null
+    };
+
+    function createPuzzleBoard() {
+      const arr = [];
+      for (let i = 1; i <= 8; i++) arr.push(i);
+      arr.push(0);
+      return arr;
+    }
+
+    function indexToRowCol(index) {
+      return { row: Math.floor(index / puzzleGame.size), col: index % puzzleGame.size };
+    }
+
+    function getTileAt(row, col) {
+      return puzzleGame.board[row * puzzleGame.size + col];
+    }
+
+    function isAdjacent(row, col) {
+      const { row: erow, col: ecol } = puzzleGame.empty;
+      return (Math.abs(row - erow) + Math.abs(col - ecol) === 1);
+    }
+
+    function isSolved() {
+      const flat = puzzleGame.board;
+      for (let i = 0; i < flat.length - 1; i++) {
+        if (flat[i] !== i + 1) return false;
+      }
+      return flat[flat.length - 1] === 0;
+    }
+
+    function shufflePuzzleBoard() {
+      puzzleGame.board = createPuzzleBoard();
+      let moves = 120;
+
+      while (moves > 0) {
+        const { row, col } = puzzleGame.empty;
+        const options = [];
+        if (row > 0) options.push({ row: row - 1, col });
+        if (row < 2) options.push({ row: row + 1, col });
+        if (col > 0) options.push({ row, col: col - 1 });
+        if (col < 2) options.push({ row, col: col + 1 });
+
+        const pick = options[Math.floor(Math.random() * options.length)];
+        const idx = pick.row * puzzleGame.size + pick.col;
+        const emptyIdx = puzzleGame.empty.row * puzzleGame.size + puzzleGame.empty.col;
+
+        [puzzleGame.board[idx], puzzleGame.board[emptyIdx]] = [puzzleGame.board[emptyIdx], puzzleGame.board[idx]];
+        puzzleGame.empty = pick;
+
+        moves--;
+      }
+
+      document.getElementById('puzzleStatus').textContent = 'Shuffled';
+      drawPuzzleBoard();
+    }
+
+    function drawPuzzleBoard() {
+      const canvas = puzzleGame.canvas;
+      const ctx = puzzleGame.ctx;
+      const tileSize = canvas.width / puzzleGame.size;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#0d1220';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let row = 0; row < puzzleGame.size; row++) {
+        for (let col = 0; col < puzzleGame.size; col++) {
+          const value = getTileAt(row, col);
+          if (value === 0) {
+            ctx.fillStyle = '#111827';
+            ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+            continue;
+          }
+
+          ctx.fillStyle = (value % 2 === 0) ? '#ffb400' : '#00d4ff';
+          ctx.fillRect(col * tileSize + 4, row * tileSize + 4, tileSize - 8, tileSize - 8);
+
+          ctx.fillStyle = '#0d1220';
+          ctx.font = 'bold 32px Arial';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(String(value), col * tileSize + tileSize / 2, row * tileSize + tileSize / 2 + 2);
+        }
+      }
+
+      if (isSolved()) {
+        document.getElementById('puzzleStatus').textContent = 'Solved!';
+      } else {
+        document.getElementById('puzzleStatus').textContent = 'Ready';
+      }
+    }
+
+    function handlePuzzleClick(evt) {
+      const canvas = puzzleGame.canvas;
+      const rect = canvas.getBoundingClientRect();
+      const x = (evt.clientX - rect.left) * (canvas.width / rect.width);
+      const y = (evt.clientY - rect.top) * (canvas.height / rect.height);
+
+      const col = Math.floor(x / (canvas.width / puzzleGame.size));
+      const row = Math.floor(y / (canvas.height / puzzleGame.size));
+
+      if (!isAdjacent(row, col)) return;
+
+      const idx = row * puzzleGame.size + col;
+      const emptyIdx = puzzleGame.empty.row * puzzleGame.size + puzzleGame.empty.col;
+
+      [puzzleGame.board[idx], puzzleGame.board[emptyIdx]] = [puzzleGame.board[emptyIdx], puzzleGame.board[idx]];
+      puzzleGame.empty = { row, col };
+
+      drawPuzzleBoard();
+    }
+
+    function initPuzzle() {
+      puzzleGame.canvas = document.getElementById('puzzleCanvas');
+      puzzleGame.ctx = puzzleGame.canvas.getContext('2d');
+      puzzleGame.board = createPuzzleBoard();
+      puzzleGame.empty = { row: 2, col: 2 };
+      puzzleGame.canvas.addEventListener('click', handlePuzzleClick);
+      drawPuzzleBoard();
+    }
+
+    // =========================
+    // Init
+    // =========================
+    function init() {
+      updateAccountUI();
+      renderProducts('all');
+      saveCart();
+      initPuzzle();
+      document.getElementById('signOutBtn').onclick = signOut;
+      document.getElementById('tabSignIn').classList.add('active');
+      document.getElementById('tabSignUp').classList.remove('active');
+    }
+
+    init();
+  </script>
+</body>
+</html>
